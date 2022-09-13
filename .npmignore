@@ -1,0 +1,8 @@
+*.log
+.cache
+coverage/
+tmp/
+tests/
+node_modules/
+test-results/
+playwright-report/

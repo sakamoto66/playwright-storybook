@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "strict": true,
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "noImplicitOverride": true,
+        "useUnknownInCatchVariables": false,
+        "baseUrl": "."
+    },
+    "include": [
+        "./src/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tests",
+    ],
+    "extensions": [".js", ".ts", ".json"],
+}

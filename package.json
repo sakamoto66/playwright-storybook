@@ -1,0 +1,33 @@
+{
+  "name": "playwright-storybook",
+  "version": "0.1.0",
+  "description": "run story of storybook by playwright",
+  "keywords": ["storybook", "playwright", "test"],
+  "author": "Koichi Sakamoto",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "bugs": {
+    "url": "https://github.com/sakamoto66/playwright-storybook/issues"
+  },
+  "homepage": "https://github.com/sakamoto66/playwright-storybook/",
+  "bin": {
+    "playwright-storybook": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "bin": "node dist/cli.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.25.2",
+    "command-line-args": "^5.2.1",
+    "esbuild-register": "^3.3.3",
+    "nyc": "^15.1.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
