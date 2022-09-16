@@ -1,8 +1,12 @@
 {
   "name": "playwright-storybook",
-  "version": "0.1.0",
+  "version": "0.1.13",
   "description": "run story of storybook by playwright",
-  "keywords": ["storybook", "playwright", "test"],
+  "keywords": [
+    "storybook",
+    "playwright",
+    "test"
+  ],
   "author": "Koichi Sakamoto",
   "license": "MIT",
   "main": "dist/index.js",
@@ -24,6 +28,7 @@
   "dependencies": {
     "@playwright/test": "^1.25.2",
     "command-line-args": "^5.2.1",
+    "esbuild": "^0.15.7",
     "esbuild-register": "^3.3.3",
     "nyc": "^15.1.0"
   },

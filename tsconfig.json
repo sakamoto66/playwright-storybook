@@ -2,14 +2,13 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "commonjs",
-        "outDir": "dist",
-        "esModuleInterop": true,
+        "moduleResolution": "node",
         "strict": true,
-        "allowJs": true,
-        "resolveJsonModule": true,
-        "noImplicitOverride": true,
-        "useUnknownInCatchVariables": false,
-        "baseUrl": "."
+        "skipLibCheck": true,
+        "declaration": true,
+        "pretty": true,
+        "newLine": "lf",
+        "outDir": "dist"
     },
     "include": [
         "./src/**/*",

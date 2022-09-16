@@ -4,7 +4,7 @@ import { Page, test } from '@playwright/test'
 
 const NYC = require('nyc')
 const uuid = require('uuid')
-const { execSync } = require('child_process')
+const { spawn } = require('child_process')
 const NYC_DIR = path.resolve(process.cwd(), '.nyc_output')
 const COV_MERGE_DIR = path.join(NYC_DIR, 'merge')
 const COV_REPORT_DIR = path.join(process.cwd(), 'coverage')
@@ -71,19 +71,21 @@ export function clearCoverage() {
 }
 
 export async function buildCoverage() {
-  const nyc = new NYC({
-    _: ['merge'],
-  })
-  const map = await nyc.getCoverageMapFromAllCoverageFiles(COV_MERGE_DIR)
   const outputFile = path.join(NYC_DIR, 'coverage.json')
-  const content = JSON.stringify(map, null, 2)
-  fs.writeFileSync(outputFile, content)
-  fs.rmSync(COV_MERGE_DIR, { recursive: true })
+  if (fs.existsSync(COV_MERGE_DIR)) {
+    const nyc = new NYC({
+      _: ['merge'],
+    })
+    const map = await nyc.getCoverageMapFromAllCoverageFiles(COV_MERGE_DIR)
+    const content = JSON.stringify(map, null, 2)
+    fs.writeFileSync(outputFile, content)
+    fs.rmSync(COV_MERGE_DIR, { recursive: true })
+  }
 
-  execSync(`npx nyc report --reporter=text -t ${NYC_DIR}`, {
+  await spawn('npx', ['nyc', 'report', '--reporter=text', '-t', NYC_DIR], {
     stdio: 'inherit',
   })
-  execSync(`npx nyc report --reporter=html -t ${NYC_DIR} --report-dir ${COV_REPORT_DIR}`, {
+  await spawn('npx', ['nyc', 'report', '--reporter=html', '-t', NYC_DIR, '--report-dir', COV_REPORT_DIR], {
     stdio: 'inherit',
   })
 }
